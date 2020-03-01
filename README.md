@@ -35,10 +35,12 @@ Nous avons configuré notre base de données, maintenant nous allons faire la co
 - Placez-vous sur votre répertoire de travail.
 - Ouvrez le fichier <strong>"connexionPDO.php"</strong> sur votre éditeur de texte.
 - Modifiez les paramètres de connection à la base de données :<br>
+```
   $host = 'localhost:<strong>PORT</strong>'; <strong>//Remplacer PORT par le port utilisé par MySQL</strong><br>
   $db = 'tchat';<br>
   $user = 'root';<br>
   $pass = ''; <strong>//Le mot de passe que vous avez entré lors de la connection sur phpMyAdmin. Par défautl le champ était vide</strong>
+```
   
 ## Utilisation du TCHAT-JS
 Nous avons installé et configuré notre projet sur notre serveur Web. Il reste plus qu'à découvrir les différentes fonctionnalités de notre application Web TCHAT-JS
