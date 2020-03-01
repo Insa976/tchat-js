@@ -1,3 +1,11 @@
+## SOMMAIRE
+### Installation du TCHAT-JS
+##### 1) Nous allons télécharger et installer quelques programmes avant de passer à l'installation du TCHAT-JS
+##### 2) Installation du TCHAT-JS
+##### 3) Quelques paramètres (phpMyAdmin et PHP/MySQL)
+### Utilisation du TCHAT-JS
+---
+
 ## Installation du TCHAT-JS
 #### 1) Nous allons télécharger et installer quelques programmes avant de passer à l'installation du TCHAT-JS
 - Télécharger un éditeur de texte (Notepad++, Sublime Text, ...)
