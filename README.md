@@ -31,7 +31,7 @@ Nous allons par la suite créer notre base de données MySQL sur phpMyAdmin. Et 
 - Une fois la base créée, placez-vous sur la base et appuyez sur <strong>"importer"</strong>
 - Choissiez un fichier. Allez dans votre espace de travail, dans bdd selectionnez le fichier <strong>"tchat.sql"</strong>. Et ensuite  appuyez sur <strong>"éxécuter"</strong>
 
-Nous avons configuré notre base de données, maintenant nous allons faire la connection avec PHP ett MySQL
+Nous avons configuré notre base de données, maintenant nous allons faire la connection avec PHP et MySQL
 - Placez-vous sur votre répertoire de travail.
 - Ouvrez le fichier <strong>"connexionPDO.php"</strong> sur votre éditeur de texte.
 - Modifiez les paramètres de connection à la base de données :<br>
