@@ -1,2 +1,3 @@
-# Tchat-js
-Projet de JS - LPRO DASI
+## Installation du TCHAT-JS
+
+# Utilisation du TCHAT-JS
