@@ -41,3 +41,8 @@ Nous avons configuré notre base de données maintenant nous allons faire la con
   $pass = ''; <strong>//Le mot de passe que vous avez entré lors de la connection sur phpMyAdmin. Par défautl le champ était vide</strong>
   
 ## Utilisation du TCHAT-JS
+Nous avons installé et configuré notre projet sur notre serveur Web. Il reste plus qu'à découvrir les différentes fonctionnalités de notre application Web TCHAT-JS
+- Ouvrir le fichier index.php dans votre répertoire de travail, avec un navigateur Web.
+- Vous allez avoir un URL de ce genre : D:/wamp64/www/tchat-js/index.php
+- Modifier l'URL : localhost/tchat-js/index.php
+- Vous avez maintenant votre application Web TCHAT-JS sur la page index de votre projet.
