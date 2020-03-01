@@ -31,7 +31,7 @@ Nous allons par la suite créer notre base de données MySQL sur phpMyAdmin. Et 
 - Une fois la base créée, placez-vous sur la base et appuyez sur <strong>"importer"</strong>
 - Choissiez un fichier. Allez dans votre espace de travail, dans bdd selectionnez le fichier <strong>"tchat.sql"</strong>. Et ensuite  appuyez sur <strong>"éxécuter"</strong>
 
-Nous avons configuré notre base de données maintenant nous allons faire la connection avec PHP ett MySQL
+Nous avons configuré notre base de données, maintenant nous allons faire la connection avec PHP ett MySQL
 - Placez-vous sur votre répertoire de travail.
 - Ouvrez le fichier <strong>"connexionPDO.php"</strong> sur votre éditeur de texte.
 - Modifiez les paramètres de connection à la base de données :<br>
@@ -44,5 +44,11 @@ Nous avons configuré notre base de données maintenant nous allons faire la con
 Nous avons installé et configuré notre projet sur notre serveur Web. Il reste plus qu'à découvrir les différentes fonctionnalités de notre application Web TCHAT-JS
 - Ouvrir le fichier index.php dans votre répertoire de travail, avec un navigateur Web.
 - Vous allez avoir un URL de ce genre : D:/wamp64/www/tchat-js/index.php
-- Modifier l'URL : localhost/tchat-js/index.php
+- Modifier l'URL : localhost/tchat-js/index.php . On remarque ici, que nous avons remplacé "D:/wamp64/www" par "localhost".
 - Vous avez maintenant votre application Web TCHAT-JS sur la page index de votre projet.
+
+Une fois sur la page index. Vous n'avez plus besoin du fichier README.md.
+
+Bon Tchat 😉,
+
+INSSA Insa, INSSA Moussa, HANIN Anthony 
