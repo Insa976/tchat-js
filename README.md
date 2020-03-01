@@ -15,7 +15,7 @@
 Après avoir installer votre serveur Web correctement. Nous allons maintenant télécharger et ensuite installer notre <strong>Projet JS "TCHAT-JS"</strong>
 - Lancez votre serveur WAMP, vérifier que vous avez un icon sur la barre de tâche à droit. Voir exemple d''icon : <img src="https://mytechnozone.com/wp-content/uploads/2015/01/wamp-status.jpg" width="15%">
 - Télécharger le projet <a href="http://inssa-insa.ascmtsahara.fr/tchat-js.zip">ici</a>
-- Placez-vous sur le répertoire de votre serveur Web (../wamp/www/). Celui-ci sera votre répertoire de travail.
+- Placez-vous sur le répertoire de votre serveur Web (C:/wamp/www/). Celui-ci sera votre répertoire de travail.
 - Créer un dossier <strong>"tchat-js"</strong>
 - Extraire dans ce répertoire (tchat-js), le projet télécharger sous format .zip
 
