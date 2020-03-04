@@ -19,6 +19,7 @@
 	  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
+
 	  	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
 		<!-- Default theme -->
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
@@ -26,6 +27,7 @@
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
 		<!-- Bootstrap theme -->
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
 
 	  	<style type="text/css">
 	  		.list1.list-group{
@@ -139,6 +141,23 @@
 				</div>
 			</div>
 		</div>
+
+		<?php 
+	    	if (isset($_SESSION['id'])) {
+		    	$msgUser = new Message();
+				$nbMsg = $msgUser->getNbMsgByUser1($_SESSION["id"]);
+			}
+		?>
+	   	<input type="hidden" value="<?php if(isset($nbMsg)){ echo $nbMsg['nbMsg']; }else{ echo '0';}?>" id="nbMsg">
+
+	   	<!-- JavaScript alertifyjs -->
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+	  	<!-- NOTIFICATION JS -->
+	    <script type="text/javascript" src="../js/notification.js"></script>
+
+
+
 		<script type="text/javascript" src="../js/sendMessage.js"></script>
 		<script type="text/javascript" src="../js/statut_connexion.js"></script>
 
@@ -155,8 +174,7 @@
 					$(".lestchatteurs").filter(function() {
 						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 					});
-				});					
-
+				});
 			});
 		</script>
 	</body>

@@ -5,6 +5,7 @@
 
 	/********* UPLOAD PHOTO *********/
 	if (!$_POST && (file_exists($_FILES['file']['tmp_name']) || is_uploaded_file($_FILES['file']['tmp_name']))){ 
+
 		$user =$Users->getUsersById($_SESSION["id"]); //On récupere les infos de l'utilisateur dont l'id est passé en parametre
 		//Si la photo actuelle de l'utilisateur est differente de la photo par défault
 		if($user["photo"]!="profil-defaut.png"){

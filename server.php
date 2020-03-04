@@ -62,7 +62,7 @@ Class Users{
 
 	    copy($fic_tmp, "../images/".$fichier);
 		
-	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=1");
+	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=".$idUsers);
 		$req->execute();
 		$msg="Photo mise à jour!";
 		return $msg;
@@ -247,6 +247,20 @@ Class Message{
 		$connect = $connect->getConnexionPDO();
 
 		$req = $connect->prepare(" SELECT count(*) AS nbMessage, (SELECT prenom from Users WHERE idUsers = ".$idUser2.") AS prenom_user2 FROM `message` WHERE (`idUsers1`=".$idUser1." AND `idUsers2`=".$idUser2.") OR (`idUsers1`=".$idUser2." AND `idUsers2`=".$idUser1.")");
+		$req->execute();
+		$donnees = $req->fetch();
+		return $donnees;
+	}
+
+
+	/*Fonction qui retroune le comptage des messages de l'utilisateur 1*/
+	public function getNbMsgByUser1($idUser1){
+
+		//Connexion PDO
+		$connect = new ConnectionPDO();
+		$connect = $connect->getConnexionPDO();
+
+		$req = $connect->prepare(" SELECT count(*) as nbMsg, U1.nom as nom, U1.prenom as prenom FROM message M INNER JOIN Users U1 ON M.idUsers1 =U1.idUsers WHERE idUsers2 = '".$idUser1."' ORDER BY dateM DESC ");
 		$req->execute();
 		$donnees = $req->fetch();
 		return $donnees;

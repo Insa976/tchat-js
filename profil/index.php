@@ -52,7 +52,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a href="./" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
 						<li class="nav-item active"><a href="../profil/" class="nav-link"><i class="fa fa-user-circle-o"></i> <?php echo substr($leuser['nom'],0,1).". ".$leuser['prenom'] ;?></a></li>&nbsp;
-						<li class="nav-item"><a href="../server/deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+						<li class="nav-item"><a href="../server/deconnexion.php" id="deconnexion" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>
 			</div>
@@ -127,10 +127,24 @@
 			</div>
 		</div>
 
+		<?php 
+	    	if (isset($_SESSION['id'])) {
+		    	$msgUser = new Message();
+				$nbMsg = $msgUser->getNbMsgByUser1($_SESSION["id"]);
+			}
+		?>
+	   	<input type="hidden" value="<?php if(isset($nbMsg)){ echo $nbMsg['nbMsg']; }else{ echo '0';}?>" id="nbMsg">
+
 
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	  	<!-- JavaScript alertifyjs -->
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+	  	<!-- NOTIFICATION JS -->
+	    <script type="text/javascript" src="../js/notification.js"></script>
 
 
 	  	<!-- JavaScript -->
@@ -373,6 +387,7 @@
 			    			setUsersSup : "0"
 			    		}, function(data) {
 							swal("Suppession réussie !", data, "success",{button:false});
+							setTimeout(function(){ window.location="../server/deconnexion.php"; }, 3000);
 						});
 					}else{
 						swal("Suppession annulée !", "La suppression a été annulée", "error",{button:false});
