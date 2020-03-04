@@ -50,9 +50,9 @@
 
 				<div id="navbarSupportedContent" class="collapse navbar-collapse text-center">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item"><a href="../tchat/" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
-						<li class="nav-item active"><a href="./" class="nav-link"><i class="fa fa-user-circle-o"></i> <?php echo substr($leuser['nom'],0,1).". ".$leuser['prenom'] ;?></a></li>&nbsp;
-						<li class="nav-item"><a href="../server/deconnexion.php" id="deconnexion" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+						<li class="nav-item"><a href="./" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
+						<li class="nav-item active"><a href="../profil/" class="nav-link"><i class="fa fa-user-circle-o"></i> <?php echo substr($leuser['nom'],0,1).". ".$leuser['prenom'] ;?></a></li>&nbsp;
+						<li class="nav-item"><a href="../server/deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>
 			</div>
@@ -373,7 +373,6 @@
 			    			setUsersSup : "0"
 			    		}, function(data) {
 							swal("Suppession réussie !", data, "success",{button:false});
-							setTimeout(function(){ window.location="../server/deconnexion.php"; }, 3000);
 						});
 					}else{
 						swal("Suppession annulée !", "La suppression a été annulée", "error",{button:false});

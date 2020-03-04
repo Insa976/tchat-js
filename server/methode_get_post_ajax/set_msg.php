@@ -8,4 +8,5 @@
 
 		$Message->setMessage($id1, $id2, $msg);
 	}
+
 ?>
