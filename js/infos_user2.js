@@ -13,29 +13,25 @@ $(function(){
 			}
 		)
 	}
-
 	infosUser();
 
 	function statutUser(){
-		setInterval(function(){
-			$.get(
-				'../server/methode_get_post_ajax/infos_user2.php',
-				{
-					iduser2 : $("#user2").val(),
-				},
-				function(data){
-					var dataJson = JSON.parse(data);
-					if (dataJson.statut==0) {
-						$("#imgUser2").removeClass("statut_connecte").addClass("statut_non_connecte");
-					}
-					else{
-						$("#imgUser2").removeClass("statut_non_connecte").addClass("statut_connecte");
-					}				
+		$.get(
+			'../server/methode_get_post_ajax/infos_user2.php',
+			{
+				iduser2 : $("#user2").val(),
+			},
+			function(data){
+				var dataJson = JSON.parse(data);
+				if (dataJson.statut==0) {
+					$("#imgUser2").removeClass("statut_connecte").addClass("statut_non_connecte");
 				}
-			)
-		},1000)
+				else{
+					$("#imgUser2").removeClass("statut_non_connecte").addClass("statut_connecte");
+				}				
+			}
+		)
 	}
-	statutUser();
-	
+	setInterval(statutUser,1000);
 
 })

@@ -3,10 +3,7 @@
 	require_once "server.php";
 	if (isset($_SESSION['id'])) {
 		$user = $Users->getUsersById($_SESSION['id']);
-	}
-
-	$lesUsers = $Users->getUsers();
-	
+	}	
 ?>
 <!DOCTYPE html>
 	<html>
@@ -24,6 +21,13 @@
 	  			overflow-y: auto;
 	  			overflow-x: hidden;
 	  		}
+			.statut_connecte{
+				border:3px solid green;
+			}
+
+			.statut_non_connecte{
+				border:3px solid red;
+			}
 	  	</style>
 	</head>
 	<body>
@@ -44,11 +48,11 @@
 						
 						
 						<?php if(!isset($_SESSION['id'])){ ?>
-							<li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#inscriptionModal"><i class="fa fa-user-plus"></i> S'inscrire</a></li>
-							<li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-sign-in"></i> Se connecter</a></li>
+							<li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#inscriptionModal"><i class="fa fa-user-plus"></i> S'inscrire</a></li>&nbsp;
+							<li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-sign-in"></i> Se connecter</a></li>&nbsp;
 						<?php }else { ?>
-							<li class="nav-item"><a href="tchat/" class="nav-link"><i class="fa fa-comments-o fa-lg"></i><span class="badge">10</span></a></li>
-							<li class="nav-item"><a href="profil/" class="nav-link" title="Profil"><i class="fa fa-user-circle-o"></i> <?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>
+							<li class="nav-item"><a href="tchat/" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
+							<li class="nav-item"><a href="profil/" class="nav-link" title="Profil"><i class="fa fa-user-circle-o"></i> <?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>&nbsp;
 							<li class="nav-item"><a href="server/deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 						<?php } ?>
 					</ul>
@@ -85,16 +89,7 @@
 									<input type="text" id="rechercher" class="form-control" placeholder="Rechercher une personne ...">
 								</div>
 								<ul class="list-group" id="liste_tchatter">
-									<?php foreach ($lesUsers as $users): ?>
-										<?php if ($users["idUsers"]!=$user['idUsers']): ?>
-											<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">
-												<span><img src="images/<?php echo $users["photo"]; ?>" alt="<?php echo $users["nom"]." ".$users["prenom"]; ?>" class="rounded-circle" style="width:50px; "></span>
-												<?php echo $users["nom"]." ".$users["prenom"];?>
-												<span class="badge badge-warning mt-2 badge-pill">12</span>
-												<a href="tchat/?idUser2=<?php echo $users['idUsers']; ?>"><span class="badge badge-primary badge-pill p-2">Tchatter</span></a>
-											</li>
-										<?php endif ?>
-									<?php endforeach ?>
+		
 								</ul>
 							</div>
 
@@ -166,7 +161,7 @@
 
 		                    <span id="messageInscription">
 		                    	<ul id="mere_liste_li">
-		                    		<!-- Ici la liste des messages des champs après avoir cliquer inscription -->
+		                    		<!-- Ici la liste des messages d'erreurs des champs après avoir cliquer inscription s'il y en a -->
 		                    	</ul>
 		                    </span>
 
@@ -211,12 +206,16 @@
 
 	  	<!-- JS Pour l'inscription et la connection -->
 	    <script type="text/javascript" src="js/ins_conn.js"></script>
+	    <?php if (isset($_SESSION['id'])){ ?>
+	    	<script type="text/javascript" src="js/statut_connexion_home.js"></script>
+	    <?php } ?>
 		<script type="text/javascript">
 			$(document).ready(function(){
+
 				$("#rechercher").on("keyup", function() {
 					var value = $(this).val().toLowerCase();
 					$("#liste_tchatter li").filter(function() {
-						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
 					});
 				});
 			});

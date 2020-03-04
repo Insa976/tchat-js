@@ -1,3 +1,9 @@
+<?php 
+	if (session_status() == PHP_SESSION_NONE) session_start();
+	if (isset($_SESSION['id'])){
+		header('Location: ./');
+	}
+?>
 <!DOCTYPE html>
 	<html>
 	<head id="le_head">
@@ -25,11 +31,11 @@
 
 				<div id="navbarSupportedContent" class="collapse navbar-collapse text-center">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a href="#" class="nav-link"><i class="fa fa-comments-o fa-lg"></i><span class="badge">10</span></a></li>
+						<!-- <li class="nav-item active"><a href="#" class="nav-link"><i class="fa fa-comments-o fa-lg"></i><span class="badge">10</span></a></li>
 						<li class="nav-item"><a href="#" data-toggle="modal" data-target="#inscriptionModal" class="nav-link"><i class="fa fa-user-plus"></i> S'inscrire</a></li>
 						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-user-circle-o"></i> N. Prénom</a></li>
 						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-in"></i> Se connecter</a></li>
-						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li> -->
 					</ul>
 				</div>
 			</div>
