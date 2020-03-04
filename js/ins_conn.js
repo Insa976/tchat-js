@@ -124,6 +124,7 @@ function Connexion(){
 			//console.log(infosNom[i]+" est vide");
 			champs[i].css("border", "1px solid red");
 			msg += "<li class='text-danger'>Veuillez remplir le champ "+infosNom[i]+".</li>";
+			$("#messageConnexion").empty();
 		}else{
 			champs[i].css("border", "1px solid green");
 			nb_i++;
@@ -141,7 +142,7 @@ function Connexion(){
 
 				    }, function(data) {
 				    	var dataJson = JSON.parse(data);
-				    	console.log(dataJson);
+				    	//console.log(dataJson);
 				        $("#formulaireConnexion").trigger("reset");
 				        $("#messageConnexion").empty().append(dataJson.msg);
 				        $("#le_head").append(dataJson.redirection);

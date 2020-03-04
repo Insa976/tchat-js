@@ -12,7 +12,7 @@
 		$user = $Users->getUsersByEmail($mail);
 
 		/*Vérification des informations de l'utilisateur*/
-		if ($user['email'] == $mail) {
+		if (isset($user['email']) && $user['email'] == $mail) {
 			if ($user['mdp'] == $mdp) {
 				$message .= '<div class="p-3 mb-2 bg-success text-white">Vous êtes connecté !</div>';
 				$redirection .='<meta http-equiv="refresh" content="1;URL=./">';
