@@ -62,7 +62,7 @@ Class Users{
 
 	    copy($fic_tmp, "../images/".$fichier);
 		
-	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=".$idUsers);
+	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=1");
 		$req->execute();
 		$msg="Photo mise à jour!";
 		return $msg;
