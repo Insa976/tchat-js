@@ -252,6 +252,20 @@ Class Message{
 		return $donnees;
 	}
 
+
+	/*Fonction qui retroune le comptage des messages de l'utilisateur 1*/
+	public function getNbMsgByUser1($idUser1){
+
+		//Connexion PDO
+		$connect = new ConnectionPDO();
+		$connect = $connect->getConnexionPDO();
+
+		$req = $connect->prepare(" SELECT count(*) as nbMsg, U1.nom as nom, U1.prenom as prenom FROM message M INNER JOIN Users U1 ON M.idUsers1 =U1.idUsers WHERE idUsers2 = '".$idUser1."' ORDER BY dateM DESC ");
+		$req->execute();
+		$donnees = $req->fetch();
+		return $donnees;
+	}
+
 	public function setMessage($idUser1, $idUser2, $msg){
 
 		//Connexion PDO
