@@ -17,7 +17,7 @@
 			}
 		}
 		//Nous allons ici modifier notre photo 
-		$leMsg = $Users->setUpdatePhoto(2, $_FILES['file']['tmp_name']);
+		$leMsg = $Users->setUpdatePhoto($_SESSION["id"], $_FILES['file']['tmp_name']);
 		echo $leMsg;
 	}
 
