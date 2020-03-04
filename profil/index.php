@@ -127,10 +127,24 @@
 			</div>
 		</div>
 
+		<?php 
+	    	if (isset($_SESSION['id'])) {
+		    	$msgUser = new Message();
+				$nbMsg = $msgUser->getNbMsgByUser1($_SESSION["id"]);
+			}
+		?>
+	   	<input type="hidden" value="<?php if(isset($nbMsg)){ echo $nbMsg['nbMsg']; }else{ echo '0';}?>" id="nbMsg">
+
 
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	  	<!-- JavaScript alertifyjs -->
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+	  	<!-- NOTIFICATION JS -->
+	    <script type="text/javascript" src="../js/notification.js"></script>
 
 
 	  	<!-- JavaScript -->

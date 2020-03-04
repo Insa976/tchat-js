@@ -15,6 +15,17 @@
 	  	<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
 	  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 	  	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	  	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+		<!-- Default theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+		<!-- Semantic UI theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+		<!-- Bootstrap theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+
 	  	<style type="text/css">
 	  		#liste_tchatter{
 	  			height: 200px;
@@ -200,9 +211,23 @@
 	        </div>
 	    </div>
 
+	    <?php 
+	    	if (isset($_SESSION['id'])) {
+		    	$msgUser = new Message();
+				$nbMsg = $msgUser->getNbMsgByUser1($_SESSION["id"]);
+			}
+		?>
+	   	<input type="hidden" value="<?php if(isset($nbMsg)){ echo $nbMsg['nbMsg']; }else{ echo '0';}?>" id="nbMsg">
+
+
+
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 	  	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	  	<!-- JavaScript alertifyjs -->
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 	  	<!-- JS Pour l'inscription et la connection -->
 	    <script type="text/javascript" src="js/ins_conn.js"></script>
@@ -218,6 +243,23 @@
 						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
 					});
 				});
+
+				//Gestion de notifcation 
+				setInterval(function(){
+					var nbM = $("#nbMsg").val();
+					$.post(
+						'server/notification.php',
+						function(data){
+							var dataJson = JSON.parse(data);
+							if (dataJson.nbM!=nbM){
+								alertify.success("Vous avez un nouveau message de "+dataJson.nom+" "+dataJson.prenom);
+								$("#nbMsg").attr("value",dataJson.nbM);
+							}
+						}
+					)
+				},1000)
+
+
 			});
 		</script>
 	</body>
