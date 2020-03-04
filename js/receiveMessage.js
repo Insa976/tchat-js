@@ -35,7 +35,7 @@ $(document).ready(function(){
 					
 					var dataJson = JSON.parse(nbMsg);
 
-					if(countM < dataJson.nbMsge){
+					if(countM != dataJson.nbMsge){
 
 						countM = dataJson.nbMsge;
 

@@ -9,7 +9,7 @@ Class Users{
 		$connect = new ConnectionPDO();
 		$connect = $connect->getConnexionPDO();
 
-		$req = $connect->prepare("SELECT * FROM Users");
+		$req = $connect->prepare("SELECT * FROM Users ORDER BY statut DESC, nom, prenom ASC");
 		$req->execute(); 
 		$donnees = $req->fetchAll();
 		return $donnees;
@@ -62,7 +62,7 @@ Class Users{
 
 	    copy($fic_tmp, "../images/".$fichier);
 		
-	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=1");
+	    $req = $connect->prepare("UPDATE Users SET photo='".$fichier."' WHERE idUsers=".$idUsers);
 		$req->execute();
 		$msg="Photo mise à jour!";
 		return $msg;
@@ -78,6 +78,15 @@ Class Users{
 		$req->execute(); 
 		$msg="Données mises à jour!";
 		return $msg;
+	}
+
+	public function setUpdateStatut($idUsers,$statut){
+		//Connexion PDO
+		$connect = new ConnectionPDO();
+		$connect = $connect->getConnexionPDO();
+
+		$req = $connect->prepare("UPDATE Users SET statut='".$statut."' WHERE idUsers='".$idUsers."'");
+		$req->execute(); 
 	}
 
 	public function setUpdateCoordonnesTout($idUsers, $email, $pwdActuelle, $pwd, $pwd1){
@@ -121,8 +130,10 @@ Class Users{
 		$connect = new ConnectionPDO();
 		$connect = $connect->getConnexionPDO();
 
-		$req = $connect->prepare("DELETE FROM Users WHERE idUsers='".$idUsers."'");
+		$req = $connect->prepare("DELETE FROM message WHERE idUsers1='".$idUsers."' OR idUsers2='".$idUsers."'");
 		$req->execute(); 
+		$req1 = $connect->prepare("DELETE FROM Users WHERE idUsers='".$idUsers."'");
+		$req1->execute(); 
 		$msg="Votre compte a été supprimé avec succès. Vous allez être déconnecté automatiquement";
 		return $msg;
 	}
@@ -167,7 +178,18 @@ Class Users{
 		$insert_User->execute();
 	}
 
+	/*Fonction qui retroune le comptage des messages*/
+	public function getNbStatutConnexion(){
 
+		//Connexion PDO
+		$connect = new ConnectionPDO();
+		$connect = $connect->getConnexionPDO();
+
+		$req = $connect->prepare(" SELECT * FROM `Users` WHERE statut=0");
+		$req->execute();
+		$donnees = $req->rowCount();
+		return $donnees;
+	}
 
 }
 $Users = new Users();

@@ -4,8 +4,6 @@
 	verifSession_if_Off();
 
 	$user = $Users->getUsersById($_SESSION['id']);
-
-	$lesUsers = $Users->getUsers();
 ?>
 <!DOCTYPE html>
 	<html>
@@ -37,10 +35,6 @@
 				position: relative;
 			}
 
-			/*.card-tchat{
-				height: 300px;
-			}*/
-
 			.card-vide{
 				background: url('https://via.placeholder.com/500x300?text=Messagerie vide') no-repeat center ; 
 				-webkit-background-size: cover;
@@ -71,8 +65,8 @@
 
 				<div id="navbarSupportedContent" class="collapse navbar-collapse text-center">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a href="./" class="nav-link"><i class="fa fa-comments-o fa-lg"></i><span class="badge">10</span></a></li>
-						<li class="nav-item"><a href="../profil/" class="nav-link"><i class="fa fa-user-circle-o"></i><?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>
+						<li class="nav-item active"><a href="./" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
+						<li class="nav-item"><a href="../profil/" class="nav-link"><i class="fa fa-user-circle-o"></i> <?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>&nbsp;
 						<li class="nav-item"><a href="../server/deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>
@@ -88,16 +82,8 @@
 				</div>
 
 				<div class="col-md-12">
-					<div class="list1 list-group list-group-horizontal text-center flex-row flex-nowrap">
-						<?php foreach ($lesUsers as $users): ?>
-							<?php if ($users["idUsers"]!=$user['idUsers']): ?>
-								<a href="./?idUser2=<?php echo $users['idUsers']; ?>" class="list-group-item list-group-item-action" id="liste_tchatter">
-									<img src="../images/<?php echo $users["photo"]; ?>" alt="<?php echo $users["nom"]." ".$users["prenom"]; ?>" class="rounded-circle" style="width:50px; "><br>
-									<?php echo substr($users["nom"],0,1).".".$users["prenom"];?><br>
-									<span class="badge badge-primary mt-2 badge-pill">12</span>
-								</a>
-							<?php endif ?>
-						<?php endforeach ?>
+					<div class="list1 list-group list-group-horizontal text-center flex-row flex-nowrap" id="lesInscrits">
+
 					</div>
 				</div>
 			</div>
@@ -109,7 +95,7 @@
 						<div class="card conversation">
 							<!--  -->
 								<div class="card-header">
-									<button class="btn btn-default border btn-sm"  style="float: right;"><span class="fa fa-trash-o mt-2"></span></button>
+									<!-- <button class="btn btn-default border btn-sm"  style="float: right;"><span class="fa fa-trash-o mt-2"></span></button> -->
 									<strong id="nameUser2" style="font-size: 25px;"></strong> 
 									<span style="float: left;"><img src="" id="imgUser2" class="mr-3 rounded-circle" style="width:40px;"></span>
 								</div>
@@ -145,6 +131,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="../js/sendMessage.js"></script>
+		<script type="text/javascript" src="../js/statut_connexion.js"></script>
 
 		<?php if(isset($_GET['idUser2']) && $_GET['idUser2'] != ""){ ?>
 			<!-- GETTER MESSAGES -->
@@ -156,7 +143,7 @@
 			$(document).ready(function(){
 				$("#rechercher").on("keyup", function() {
 					var value = $(this).val().toLowerCase();
-					$("#liste_tchatter li").filter(function() {
+					$(".lestchatteurs").filter(function() {
 						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 					});
 				});

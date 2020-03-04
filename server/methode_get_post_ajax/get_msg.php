@@ -36,7 +36,7 @@
 				<div class="card-column col-md-7 col-10 mt-2">
 					<div class="card bg-warning">
 						<div class="card-body">
-							<strong><?php echo $lesmsg['nom'].' '.$lesmsg['prenom']; ?></strong><br>
+							<strong><?php /*echo $lesmsg['nom'].' '.$lesmsg['prenom'];*/ ?>Moi</strong><br>
 							<p class="card-text text-primary"><?php echo $lesmsg['libelleM']; ?></p>
 							<small style="float: right;" id="dateheure"><?php echo $dateformat; ?></small>
 						</div>
@@ -50,7 +50,7 @@
 				<div class="card-column col-md-7 col-10 mt-2">
 					<div class="card bg-light">
 						<div class="card-body">
-							<strong><?php echo $lesmsg['nom'].' '.$lesmsg['prenom']; ?></strong><br>
+							<strong><?php echo substr($lesmsg['nom'],0,1).'. '.$lesmsg['prenom']; ?></strong><br>
 							<p class="card-text text-primary"><?php echo $lesmsg['libelleM']; ?></p>
 							<small style="float: right;" id="dateheure"><?php echo $dateformat; ?></small>
 						</div>

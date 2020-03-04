@@ -18,6 +18,7 @@
 				$redirection .='<meta http-equiv="refresh" content="1;URL=./">';
 				session_start();
 				$_SESSION['id'] = $user['idUsers'];
+				$Users->setUpdateStatut($_SESSION['id'],1);
 			}
 			else{
 				$message .= '<div class="p-3 mb-2 bg-warning text-white">Votre mot de passe n\'est pas correcte !</div>';
