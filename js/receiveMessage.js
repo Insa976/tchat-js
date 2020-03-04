@@ -31,9 +31,9 @@ $(document).ready(function(){
 					iduser1 : $("#user1").val(),
 					iduser2 : $("#user2").val(),
 				},
-				function(nbMsg){
+				function(data){
 					
-					var dataJson = JSON.parse(nbMsg);
+					var dataJson = JSON.parse(data);
 
 					if(countM != dataJson.nbMsge){
 
