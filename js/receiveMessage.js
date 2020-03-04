@@ -40,6 +40,7 @@ $(document).ready(function(){
 						countM = dataJson.nbMsge;
 
 						affichageMessages();
+						//alert(dataJson.prenom);
 					}
 
 					// Si il n'y a pas de message on affiche "Messagerie vide"

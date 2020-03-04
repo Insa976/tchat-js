@@ -246,9 +246,9 @@ Class Message{
 		$connect = new ConnectionPDO();
 		$connect = $connect->getConnexionPDO();
 
-		$req = $connect->prepare(" SELECT * FROM `message` WHERE (`idUsers1`=".$idUser1." AND `idUsers2`=".$idUser2.") OR (`idUsers1`=".$idUser2." AND `idUsers2`=".$idUser1.")");
+		$req = $connect->prepare(" SELECT count(*) AS nbMessage, (SELECT prenom from Users WHERE idUsers = ".$idUser2.") AS prenom_user2 FROM `message` WHERE (`idUsers1`=".$idUser1." AND `idUsers2`=".$idUser2.") OR (`idUsers1`=".$idUser2." AND `idUsers2`=".$idUser1.")");
 		$req->execute();
-		$donnees = $req->rowCount();
+		$donnees = $req->fetch();
 		return $donnees;
 	}
 
