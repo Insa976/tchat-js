@@ -55,11 +55,11 @@ INSERT INTO `message` (`idMessage`, `dateM`, `libelleM`, `idUsers1`, `idUsers2`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Structure de la table `Users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `Users`;
+CREATE TABLE IF NOT EXISTS `Users` (
   `idUsers` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`idUsers`, `nom`, `prenom`, `dateNaissance`, `email`, `mdp`, `photo`, `statut`, `dateInscrit`) VALUES
+INSERT INTO `Users` (`idUsers`, `nom`, `prenom`, `dateNaissance`, `email`, `mdp`, `photo`, `statut`, `dateInscrit`) VALUES
 (1, 'TITI', 'Titi', '1998-01-02', 'titi@tchat-js.fr', '5d933eef19aee7da192608de61b6c23d', 'profil-defaut.png', 0, '2020-01-25'),
 (2, 'TUTU', 'Tutu', '2242-01-02', 'tutu@tchat-js.fr', 'bdb8c008fa551ba75f8481963f2201da', 'profil-defaut.png', 0, '2020-01-25'),
 (4, 'TOTO', 'Toto', '0242-04-02', 'toto@tchat-js.fr', 'f71dbe52628a3f83a77ab494817525c6', 'profil-defaut.png', 0, '2020-01-26'),
@@ -92,8 +92,8 @@ INSERT INTO `users` (`idUsers`, `nom`, `prenom`, `dateNaissance`, `email`, `mdp`
 -- Contraintes pour la table `message`
 --
 ALTER TABLE `message`
-  ADD CONSTRAINT `Message_Users1_FK` FOREIGN KEY (`idUsers1`) REFERENCES `users` (`idUsers`),
-  ADD CONSTRAINT `Message_Users2_FK` FOREIGN KEY (`idUsers2`) REFERENCES `users` (`idUsers`);
+  ADD CONSTRAINT `Message_Users1_FK` FOREIGN KEY (`idUsers1`) REFERENCES `Users` (`idUsers`),
+  ADD CONSTRAINT `Message_Users2_FK` FOREIGN KEY (`idUsers2`) REFERENCES `Users` (`idUsers`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

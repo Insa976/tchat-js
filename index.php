@@ -245,19 +245,22 @@
 				});
 
 				//Gestion de notifcation 
-				setInterval(function(){
-					var nbM = $("#nbMsg").val();
-					$.post(
-						'server/notification.php',
-						function(data){
-							var dataJson = JSON.parse(data);
-							if (dataJson.nbM!=nbM){
-								alertify.success("Vous avez un nouveau message de "+dataJson.nom+" "+dataJson.prenom);
-								$("#nbMsg").attr("value",dataJson.nbM);
+				<?php if(isset($_SESSION["id"])) : ?>
+					setInterval(function(){
+						var nbM = $("#nbMsg").val();
+						$.post(
+							'server/notification.php',
+							function(data){
+								var dataJson = JSON.parse(data);
+								if (dataJson.nbM!=nbM){
+									alertify.success("Vous avez un nouveau message de "+dataJson.nom+" "+dataJson.prenom);
+									$("#nbMsg").attr("value",dataJson.nbM);
+								}
 							}
-						}
-					)
-				},1000)
+						)
+					},1000)
+				<?php endif ?>
+
 
 
 			});
