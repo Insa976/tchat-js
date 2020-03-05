@@ -63,7 +63,7 @@
 							<li class="nav-item"><a href="#" class="nav-link" data-toggle="modal" data-target="#connexionModal"><i class="fa fa-sign-in"></i> Se connecter</a></li>&nbsp;
 						<?php }else { ?>
 							<li class="nav-item"><a href="tchat/" class="nav-link"><i class="fa fa-comments-o fa-lg"></i> Tchatter</a></li>&nbsp;
-							<li class="nav-item"><a href="profil/" class="nav-link" title="Profil"><i class="fa fa-user-circle-o"></i> <?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>&nbsp;
+							<li class="nav-item"><a href="profil/" class="nav-link" title="Profil"><!-- <i class="fa fa-user-circle-o"></i> --><img src="images/<?php echo $user['photo'];?>" class="img-fluid rounded-circle" style="height: 30px; border:2px solid #FEE;"> <?php echo substr($user['nom'],0,1).". ".$user['prenom'] ;?></a></li>&nbsp;
 							<li class="nav-item"><a href="server/deconnexion.php" class="nav-link"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 						<?php } ?>
 					</ul>
